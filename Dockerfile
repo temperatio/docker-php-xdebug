@@ -1,5 +1,8 @@
 FROM php:7.2-apache
 
+LABEL maintainer="César Gómez <cegomez@gmail.com>"
+ENV REFRESHED_AT 2018-04-26
+
 RUN a2enmod rewrite
 
 RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libldap2-dev git \
