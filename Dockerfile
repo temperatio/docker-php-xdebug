@@ -1,7 +1,7 @@
 FROM php:7.2-apache
 
 LABEL maintainer="César Gómez <cegomez@gmail.com>"
-ENV REFRESHED_AT 2018-04-26
+ENV REFRESHED_AT 2018-04-30
 
 RUN a2enmod rewrite
 
@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libldap2-dev git
         && docker-php-ext-install ldap \
         && docker-php-ext-install zip \
         && docker-php-ext-install mysqli \
+        && docker-php-ext-install pdo_mysql \
         && apt-get purge -y libpng-dev libjpeg-dev libldap2-dev
 
 
@@ -21,6 +22,8 @@ RUN yes | pecl install xdebug \
     && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini
+
+RUN yes | pear install Log
 
 RUN chown -hR www-data:www-data /var/www/html
 
