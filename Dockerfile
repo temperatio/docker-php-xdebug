@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libldap2-dev g
         && docker-php-ext-install ldap \
         && docker-php-ext-install zip \
         && docker-php-ext-install mysqli \
+        && docker-php-ext-install mysql \
         && apt-get purge -y libpng12-dev libjpeg-dev libldap2-dev
 
 
