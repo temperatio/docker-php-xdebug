@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libldap2-dev git
         && docker-php-ext-install ldap \
         && docker-php-ext-install zip \
         && docker-php-ext-install mysqli \
+        && docker-php-ext-install pdo \
         && docker-php-ext-install pdo_mysql \
         && apt-get purge -y libpng-dev libjpeg-dev libldap2-dev
 
